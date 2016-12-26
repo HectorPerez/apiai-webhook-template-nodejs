@@ -45,8 +45,7 @@ app.post('/', function (req, res) {
     assistant.data.answer = answer;
     assistant.data.guessCount = 0;
     assistant.data.fallbackCount = 0;
-    assistant.ask(sprintf(sprintf(getRandomPrompt(GREETING_PROMPTS)) + ' ' +
-      getRandomPrompt(INVOCATION_PROMPT), MIN, MAX), NO_INPUT_PROMPTS);
+    assistant.ask("kkk ", NO_INPUT_PROMPTS);
   }
 
   function checkGuess (assistant) {
