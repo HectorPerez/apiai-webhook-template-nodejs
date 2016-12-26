@@ -21,19 +21,26 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
+const CHECK_GUESS_ACTION = 'check_guess';
+
 // [START YourAction]
 app.post('/', function (req, res) {
   const assistant = new Assistant({request: req, response: res});
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
 
-  // Fulfill action business logic
-  function responseHandler (assistant) {
+  function checkGuess (assistant) {
+    console.log('checkGuess');
+    let answer = assistant.data.answer;
     // Complete your fulfillment logic and send a response
-    assistant.tell('Hello, World!');
+    assistant.tell('Hello, World! ' + answer);
+    return;
   }
 
-  assistant.handleRequest(responseHandler);
+  let actionMap = new Map();
+  actionMap.set(CHECK_GUESS_ACTION, checkGuess);
+
+  assistant.handleRequest(actionMap);
 });
 // [END YourAction]
 
