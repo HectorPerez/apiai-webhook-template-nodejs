@@ -21,6 +21,10 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
+function getRandomNumber (min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const MIN = 0;
 const MAX = 100;
 const CHECK_GUESS_ACTION = 'check_guess';
