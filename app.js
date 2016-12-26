@@ -22,6 +22,7 @@ let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
 const CHECK_GUESS_ACTION = 'check_guess';
+const GENERATE_ANSWER_ACTION = 'generate_answer';
 
 // [START YourAction]
 app.post('/', function (req, res) {
@@ -38,6 +39,7 @@ app.post('/', function (req, res) {
   }
 
   let actionMap = new Map();
+  actionMap.set(GENERATE_ANSWER_ACTION, generateAnswer);
   actionMap.set(CHECK_GUESS_ACTION, checkGuess);
 
   assistant.handleRequest(actionMap);
