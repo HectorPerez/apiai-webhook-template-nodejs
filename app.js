@@ -34,7 +34,6 @@ const GREETING_PROMPTS = ['Let\'s play Number Genie!', 'Welcome to Number Genie!
 const INVOCATION_PROMPT = ['I\'m thinking of a number from %s to %s. What\'s your first guess?'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear a number', 'If you\'re still there, what\'s your guess?', 'We can stop here. Let\'s play again soon.'];
 
-// [START YourAction]
 app.post('/', function (req, res) {
   const assistant = new Assistant({request: req, response: res});
   console.log('Request headers: ' + JSON.stringify(req.headers));
@@ -64,7 +63,6 @@ app.post('/', function (req, res) {
 
   assistant.handleRequest(actionMap);
 });
-// [END YourAction]
 
 if (module === require.main) {
   // [START server]
