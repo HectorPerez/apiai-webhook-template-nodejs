@@ -33,7 +33,7 @@ app.post('/', function (req, res) {
     console.log('checkGuess');
     let answer = assistant.data.answer;
     // Complete your fulfillment logic and send a response
-    assistant.tell('Hello, World! ' + answer);
+    assistant.tell('Hello, World!');
     return;
   }
 
