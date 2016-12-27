@@ -148,7 +148,7 @@ function irregular_verbs() {
 function getRandomVerb() {
   var verbs = irregular_verbs();
   var index = Math.floor(Math.random() * (Object.keys(verbs).length));
-  return verbs[index];
+  return Object.keys(verbs)[index];
 }
 
 const CHECK_GUESS_ACTION = 'check_guess';
