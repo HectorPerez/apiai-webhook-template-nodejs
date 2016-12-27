@@ -145,6 +145,12 @@ function irregular_verbs() {
   return verbs;
 }
 
+function getRandomVerb() {
+  var verbs = irregular_verbs();
+  var index = Math.floor(Math.random() * (Object.keys(verbs).length));
+  return verbs[index];
+}
+
 const CHECK_GUESS_ACTION = 'check_guess';
 const GENERATE_ANSWER_ACTION = 'generate_answer';
 const GREETING_PROMPTS = ['Let\'s play Number Genie!', 'Welcome to Number Genie!'];
@@ -178,7 +184,7 @@ app.post('/', function (req, res) {
 
     var verbs = irregular_verbs();
     if(verbs[infinitive] == guess){
-      assistant.data.infinitive = 'put';
+      assistant.data.infinitive = getRandomVerb();
       assistant.ask("Well done! And the past and past participle of " + assistant.data.infinitive + "?", NO_INPUT_PROMPTS);
     }else{
       assistant.ask("Not exactly. Try again. What is the past and past participle of " + assistant.data.infinitive + "?", NO_INPUT_PROMPTS);
