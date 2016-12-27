@@ -153,6 +153,7 @@ function getRandomVerb() {
 
 const CHECK_GUESS_ACTION = 'check_guess';
 const GENERATE_ANSWER_ACTION = 'generate_answer';
+const SURRENDER_ACTION = 'surrender';
 const GREETING_PROMPTS = ['Let\'s play Number Genie!', 'Welcome to Number Genie!'];
 const INVOCATION_PROMPT = ['I\'m thinking of a number from %s to %s. What\'s your first guess?'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear a number', 'If you\'re still there, what\'s your guess?', 'We can stop here. Let\'s play again soon.'];
@@ -172,7 +173,6 @@ app.post('/', function (req, res) {
 
   function checkGuess (assistant) {
     console.log('checkGuess');
-    let answer = assistant.data.answer;
     let guess = assistant.getArgument('guess');
     let infinitive = assistant.data.infinitive;
     console.log('infinitive: ' + infinitive);
@@ -190,9 +190,19 @@ app.post('/', function (req, res) {
     return;
   }
 
+  function surrrender (assistant) {
+    console.log('surrender');
+    let infinitive = assistant.data.infinitive;
+    var verbs = irregular_verbs();
+    assistant.data.infinitive = getRandomVerb();
+    assistant.ask("The answer is " + verbs[infinitive] + ". Next. What is the past and past participle of " + assistant.data.infinitive + "?");
+    return;
+  }
+
   let actionMap = new Map();
   actionMap.set(GENERATE_ANSWER_ACTION, generateAnswer);
   actionMap.set(CHECK_GUESS_ACTION, checkGuess);
+  actionMap.set(SURRENDER_ACTION, surrenderAndNext);
 
   assistant.handleRequest(actionMap);
 });
