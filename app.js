@@ -32,7 +32,6 @@ const GENERATE_ANSWER_ACTION = 'generate_answer';
 const GREETING_PROMPTS = ['Let\'s play Number Genie!', 'Welcome to Number Genie!'];
 const INVOCATION_PROMPT = ['I\'m thinking of a number from %s to %s. What\'s your first guess?'];
 const NO_INPUT_PROMPTS = ['I didn\'t hear a number', 'If you\'re still there, what\'s your guess?', 'We can stop here. Let\'s play again soon.'];
-const GUESS_ARGUMENT = 'guess';
 
 app.post('/', function (req, res) {
   const assistant = new Assistant({request: req, response: res});
@@ -51,7 +50,7 @@ app.post('/', function (req, res) {
   function checkGuess (assistant) {
     console.log('checkGuess');
     let answer = assistant.data.answer;
-    let guess = parseInt(assistant.getArgument(GUESS_ARGUMENT));
+    let guess = assistant.getArgument('guess');
     // Complete your fulfillment logic and send a response
     assistant.tell('Hello, World! ' + guess);
     return;
