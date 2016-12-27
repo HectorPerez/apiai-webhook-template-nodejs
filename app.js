@@ -200,7 +200,7 @@ app.post('/', function (req, res) {
   }
 
   let actionMap = new Map();
-  actionMap.set(GENERATE_ANSWER_ACTION, firstQuestion);
+  actionMap.set(FIRST_QUESTION_ACTION, firstQuestion);
   actionMap.set(CHECK_GUESS_ACTION, checkGuess);
   actionMap.set(SURRENDER_ACTION, surrender);
 
