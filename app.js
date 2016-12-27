@@ -50,8 +50,9 @@ app.post('/', function (req, res) {
   function checkGuess (assistant) {
     console.log('checkGuess');
     let answer = assistant.data.answer;
+    let guess = parseInt(assistant.getArgument(GUESS_ARGUMENT));
     // Complete your fulfillment logic and send a response
-    assistant.tell('Hello, World!');
+    assistant.tell('Hello, World! ' + guess);
     return;
   }
 
