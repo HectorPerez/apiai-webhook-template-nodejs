@@ -45,13 +45,15 @@ app.post('/', function (req, res) {
     console.log('checkGuess');
     let answer = assistant.data.answer;
     let guess = assistant.getArgument('guess');
+    let infinitive = assistant.data.infinitive;
+    console.log('infinitive: ' + infinitive);
     // Complete your fulfillment logic and send a response
-    if(assistant.data.infinitive == 'sleep' && guess == 'slept slept'){
+    if(infinitive == 'sleep' && guess == 'slept slept'){
       assistant.ask("Well done! And the past and past participle of put?", NO_INPUT_PROMPTS);
-    }else if(assistant.data.infinitive == 'put' && guess == 'put put'){
+    }else if(infinitive == 'put' && guess == 'put put'){
       assistant.ask("Well done! And the past and past participle of sleep?", NO_INPUT_PROMPTS);
     }else{
-      assistant.ask("Not exactly. Try again. What is the past and past participle of" + assistant.data.infinitive + "?", NO_INPUT_PROMPTS);
+      assistant.ask("Not exactly. Try again. What is the past and past participle of " + assistant.data.infinitive + "?", NO_INPUT_PROMPTS);
     }
     assistant.tell('Hello, World! ' + guess);
     return;
