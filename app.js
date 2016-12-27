@@ -47,6 +47,7 @@ app.post('/', function (req, res) {
     let guess = assistant.getArgument('guess');
     let infinitive = assistant.data.infinitive;
     console.log('infinitive: ' + infinitive);
+    console.log('guess: ' + guess);
     // Complete your fulfillment logic and send a response
     if(infinitive == 'sleep' && guess == 'slept slept'){
       assistant.ask("Well done! And the past and past participle of put?", NO_INPUT_PROMPTS);
