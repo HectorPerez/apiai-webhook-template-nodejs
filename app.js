@@ -190,7 +190,7 @@ app.post('/', function (req, res) {
     return;
   }
 
-  function surrrender (assistant) {
+  function surrender (assistant) {
     console.log('surrender');
     let infinitive = assistant.data.infinitive;
     var verbs = irregular_verbs();
