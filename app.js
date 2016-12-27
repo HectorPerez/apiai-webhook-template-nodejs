@@ -37,7 +37,8 @@ app.post('/', function (req, res) {
     assistant.data.answer = 7;
     assistant.data.guessCount = 0;
     assistant.data.fallbackCount = 0;
-    assistant.ask("kkk ", NO_INPUT_PROMPTS);
+    assistant.data.infinitive = 'sleep';
+    assistant.ask("What are the past and past participle of sleep?", NO_INPUT_PROMPTS);
   }
 
   function checkGuess (assistant) {
@@ -45,6 +46,13 @@ app.post('/', function (req, res) {
     let answer = assistant.data.answer;
     let guess = assistant.getArgument('guess');
     // Complete your fulfillment logic and send a response
+    if(assistant.data.infinitive == 'sleep' && guess == 'slept slept'){
+      assistant.ask("Well done! And the past and past participle of put?", NO_INPUT_PROMPTS);
+    }else if(assistant.data.infinitive == 'put' && guess == 'put put'){
+      assistant.ask("Well done! And the past and past participle of sleep?", NO_INPUT_PROMPTS);
+    }else{
+      assistant.ask("Not exactly. Try again. What is the past and past participle of" + assistant.data.infinitive + "?", NO_INPUT_PROMPTS);
+    }
     assistant.tell('Hello, World! ' + guess);
     return;
   }
