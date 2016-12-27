@@ -21,12 +21,6 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
-function getRandomNumber (min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const MIN = 0;
-const MAX = 100;
 const CHECK_GUESS_ACTION = 'check_guess';
 const GENERATE_ANSWER_ACTION = 'generate_answer';
 const GREETING_PROMPTS = ['Let\'s play Number Genie!', 'Welcome to Number Genie!'];
@@ -40,8 +34,7 @@ app.post('/', function (req, res) {
 
   function generateAnswer (assistant) {
     console.log('generateAnswer');
-    let answer = getRandomNumber(MIN, MAX);
-    assistant.data.answer = answer;
+    assistant.data.answer = 7;
     assistant.data.guessCount = 0;
     assistant.data.fallbackCount = 0;
     assistant.ask("kkk ", NO_INPUT_PROMPTS);
