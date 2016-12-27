@@ -166,10 +166,7 @@ app.post('/', function (req, res) {
 
   function generateAnswer (assistant) {
     console.log('generateAnswer');
-    assistant.data.answer = 7;
-    assistant.data.guessCount = 0;
-    assistant.data.fallbackCount = 0;
-    assistant.data.infinitive = 'sleep';
+    assistant.data.infinitive = getRandomVerb();
     assistant.ask("What are the past and past participle of sleep?", NO_INPUT_PROMPTS);
   }
 
