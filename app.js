@@ -152,7 +152,7 @@ function getRandomVerb() {
 }
 
 const CHECK_GUESS_ACTION = 'check_guess';
-const GENERATE_ANSWER_ACTION = 'generate_answer';
+const FIRST_QUESTION_ACTION = 'first_question';
 const SURRENDER_ACTION = 'surrender';
 const GREETING_PROMPTS = ['Let\'s play Number Genie!', 'Welcome to Number Genie!'];
 const INVOCATION_PROMPT = ['I\'m thinking of a number from %s to %s. What\'s your first guess?'];
@@ -165,8 +165,8 @@ app.post('/', function (req, res) {
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
 
-  function generateAnswer (assistant) {
-    console.log('generateAnswer');
+  function firstQuestion (assistant) {
+    console.log('firstQuestion');
     assistant.data.infinitive = getRandomVerb();
     assistant.ask("What are the past and past participle of " + assistant.data.infinitive + "?", NO_INPUT_PROMPTS);
   }
@@ -200,7 +200,7 @@ app.post('/', function (req, res) {
   }
 
   let actionMap = new Map();
-  actionMap.set(GENERATE_ANSWER_ACTION, generateAnswer);
+  actionMap.set(GENERATE_ANSWER_ACTION, firstQuestion);
   actionMap.set(CHECK_GUESS_ACTION, checkGuess);
   actionMap.set(SURRENDER_ACTION, surrender);
 
