@@ -86,6 +86,7 @@ function irregular_verbs() {
   verbs["mean"] = "meant meant";
   verbs["meet"] = "met met";
   verbs["pay"] = "paid paid";
+  verbs["put"] = "put put";
   verbs["quit"] = "quit quit";
   verbs["read"] = "read read";
   verbs["ride"] = "rode ridden";
