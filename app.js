@@ -51,7 +51,6 @@ function irregular_verbs() {
   verbs["drink"] = "drank drunk";
   verbs["drive"] = "drove driven";
   verbs["eat"] = "ate eaten";
-  verbs["case"] = "fur fall";
   verbs["feed"] = "fed fed";
   verbs["feel"] = "felt felt";
   verbs["fight"] = "fought fought";
